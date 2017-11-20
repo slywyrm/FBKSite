@@ -1,0 +1,7 @@
+{
+  "short_name": "FBK",
+  "name": "Frame Bakery",
+  "start_url": "home",
+  "display": "standalone",
+  "orientation": "any"
+}

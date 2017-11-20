@@ -1,0 +1,30 @@
+<div class="media-input">
+    <div class="select">
+        <h2>select file from server</h2>
+        <form *ngIf="mediaList" (ngSubmit)="select()" #selectForm="ngForm">
+            <select required *ngIf="mediaList" [(ngModel)]="selectedYear" name="selectedYear" #yearF="ngModel">
+                <option *ngFor="let year of years" [value]="year">{{year}}</option>
+            </select>
+            <select required *ngIf="selectedYear" [(ngModel)]="selectedMonth" name="selectedMonth" #monthF="ngModel">
+                <option *ngFor="let month of months" [value]="month">{{month}}</option>
+            </select>
+            <select required *ngIf="selectedMonth" [(ngModel)]="selectedFile" name="selectedFile" #fileF="ngModel">
+                <option *ngFor="let file of files" [value]="file">{{file}}</option>
+            </select>
+            <button type="submit" [disabled]="!selectForm.form.valid">select</button>
+        </form>
+    </div>
+    <div class="upload">
+        <h2>upload new file</h2>
+        <form #uploadForm="ngForm" (ngSubmit)="fileUpload()">
+            <input required type="file" name="file" accept="image/*" #mediaFile />
+            <button type="submit" [disabled]="!uploadForm.form.valid">upload</button>
+        </form>
+        <div *ngIf="uploading" class="uploading">
+            <img src="https://i.giphy.com/FmcNeI0PnsAKs.gif" alt="Loading..." />
+        </div>
+    </div>
+    <!--<div class="preview" *ngIf="link">
+        <img src="{{link}}" alt="">
+    </div>-->
+</div>

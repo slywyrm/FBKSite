@@ -1,0 +1,13 @@
+<div class="contact-overview">
+    <div [hidden]="sent">
+        <h2>Is everything ok?</h2>
+        <div><h3>Name</h3>{{contact.name}}</div>
+        <div><h3>Email</h3>{{contact.email}}</div>
+        <div><h3>Subject</h3>{{contact.subject}}</div>
+        <div><h3>Message</h3>{{contact.message}}</div>
+
+        <button type="button" (click)="">Yes</button>
+        <button type="button" (click)="Cancel()">No</button>
+    </div>
+    <div class="sent" [hidden]="!sent">Thank you!</div>
+</div>

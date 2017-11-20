@@ -1,0 +1,157 @@
+.contacts-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+#contacts-form {
+    table {
+        width: 100%;
+    }
+    td {
+        box-sizing: content-box;
+        padding: 0;
+        padding-bottom: 5px;
+    }
+    td.contacts-label {
+        width: 15%;
+        text-align: right;
+        padding-right: 10px;
+    }
+    td:not(.contacts-label) {
+        width: 85%;
+    }
+    td:not(.contacts-label)>* {
+        height: 100%;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 15pt;
+        padding: 1px;
+        resize: none;
+    }
+}
+
+.contacts-buttons {
+    margin-left: 15%;
+    * {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    button {
+        width: 100px;
+        height: 30px;
+        font-size: 15pt;
+    }
+}
+
+.ng-valid[required], .ng-valid.required {
+    border-left: 5px solid #42A948 !important;
+    /* green */
+}
+
+.ng-invalid:not(form).ng-touched {
+    border-left: 5px solid #a94442 !important;
+    /* red */
+}
+
+.contacts-warning {
+    border: 1px solid rgb(235,204,204);
+    background-color: #f2dede;
+    color: #a94442;
+}
+
+.contact-overview {
+    background: black;
+    color: white;
+    padding: 10px;
+    button {
+        width: 100px;
+        height: 30px;
+        font-size: 15pt;
+        margin-top: 5px;
+    }
+    div:not(.sent) {
+        div {
+            border: 1px solid white;
+            padding: 2px;
+            margin-bottom: 2px;
+            h3 {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+
+contacts-overlay {
+    /*background: black;
+    color: white;
+    width: 60%;
+    //height: 40%;
+    margin: auto;
+    padding: 10px;*/
+    
+    .contacts-over {
+        display: flex;
+        flex-flow: column nowrap;
+        min-height: 90vh !important;
+
+        div {
+            display: flex;
+            flex-flow: row nowrap;
+            
+            .contacts-left {
+                flex-flow: column nowrap;
+                margin-right: 10px;
+                flex: 1;
+
+                div {
+                    display: block;
+                }
+
+                b {
+                    margin-right: 5px;
+                }
+                a {
+                    color: gray;
+                }
+            }
+            
+            .contacts-right {
+                flex: 3 0;
+                display: block;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;                
+
+                .map-wrapper {
+                    display: block;
+                    padding-bottom: 40%; // This is the aspect ratio
+                    
+                    #map {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100% !important;
+                        height: 100% !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1000px)  {
+    .contacts-over {
+        div {
+            flex-flow: column nowrap !important;
+        }
+    }
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1000px) and (orientation: landscape)  {
+    .contacts-over {
+        font-size: 1.5vw !important;
+    }
+}

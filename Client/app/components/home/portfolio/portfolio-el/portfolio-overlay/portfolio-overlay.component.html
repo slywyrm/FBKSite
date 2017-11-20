@@ -1,0 +1,71 @@
+<div class="portfolio-el-overlay">
+    <div class="arrow up" (click)="scrollTo(-1)">
+        <img src="{{baseurl}}/media/up.png" alt="">
+    </div>
+    <div class="main" #main>
+        <div class="wrapper">
+            <div id="portfolio-el-descr" class="description">
+                <div class="banner">
+                    <img src="{{element.banner}}" alt="{{element.name}} / {{element.year}}">
+                </div>
+                <div class="right">
+                    <div class="text">
+                        <h1>{{element.name}}</h1>
+                        <div><b>Year: </b>{{element.year}}</div>
+                        <div><b>Client: </b>{{element.production}}</div>
+                        <!--<div><b>Director: </b>{{element.director}}</div>
+                        <div><b>Operator: </b>{{element.operator}}</div>-->
+                        <div class="descr">{{element.description}}</div>
+                        <div class="exec">
+                            <div class="period"><b>Production period:&nbsp;</b><div>{{date(element.productionStart)}}&nbsp;</div><div *ngIf="element.productionStart != element.productionEnd"> - {{date(element.productionEnd)}}</div></div>
+                            <div><b>Number of shots: </b>{{element.shotsNumber}}</div>
+                        </div>
+                    </div>
+                    <div class="social">
+                        <div *ngIf="element.imdb">
+                            <a href="{{element.imdb}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/imdb.ico" alt="IMDB" />
+                            </a>
+                        </div>
+                        <div *ngIf="element.rottenTomatoes">
+                            <a href="{{element.rottenTomatoes}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/rotten_tomatoes.png" alt="Rotten Tomatoes" />
+                            </a>
+                        </div>
+                        <div *ngIf="element.kinopoisk">
+                            <a href="{{element.kinopoisk}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/kinopoisk.png" alt="Kinopoisk" />
+                            </a>
+                        </div>
+                        <div *ngIf="element.facebook">
+                            <a href="{{element.facebook}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/facebook.png" alt="Facebook" />
+                            </a>
+                        </div>
+                        <div *ngIf="element.twitter">
+                            <a href="{{element.twitter}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/twitter.png" alt="Twitter" />
+                            </a>
+                        </div>
+                        <div *ngIf="element.vkontakte">
+                            <a href="{{element.vkontakte}}" target="_blank">
+                                <img src="{{baseurl}}/media/social/vk.png" alt="VK" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="stills">
+            <div class="still" *ngFor="let still of orderedStills; let i = index">
+                <div id="still{{i}}">
+                    <img src="{{still}}" alt="" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrow down" (click)="scrollTo(1)">
+        <img src="{{baseurl}}/media/down.png" alt="">
+    </div>
+    
+</div>

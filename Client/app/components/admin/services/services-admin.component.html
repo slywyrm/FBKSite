@@ -1,0 +1,79 @@
+<div class="services-admin" *ngIf="services">
+    <h1>services</h1>
+    <div class="service" *ngFor="let service of orderedServices; let first = first; let last = last" [ngClass]="{ first: first, last: last }">
+        <div class="service-label" [ngClass]="service.id.split(' ').join('')">
+            <div class="service-title" (click)="selectService(service)">{{service.id}}</div>
+            <div class="service-label-buttons">
+                <button class="up" (click)="changeOrder(service.id, -1)"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                <button class="down" (click)="changeOrder(service.id, 1)"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+            </div>
+        </div>
+        <div class="service-admin" *ngIf="selectedService && service === selectedService">
+            <form class="service-form">
+                <table>
+                    <tr>
+                        <td class="label">
+                            name
+                        </td>
+                        <td>
+                            <input required type="text" name="name" [(ngModel)]="selectedService.id" #nameF="ngModel" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            description
+                        </td>
+                        <td>
+                            <textarea required name="descr" cols="30" rows="10" [(ngModel)]="selectedService.description" #descrF="ngModel"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            GIF icon URL
+                        </td>
+                        <td class="file-control">
+                            <div class="control">
+                                <input required type="text" [(ngModel)]="selectedService.iconURL" name="gifIcon" #gifIcon="ngModel">
+                                <media-input (onSelected)="selectedService.iconURL = $event"></media-input>
+                            </div>
+                            <div class="preview" *ngIf="selectedService.iconURL">
+                                <img src="{{selectedService.iconURL}}" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            static icon URL
+                        </td>
+                        <td class="file-control">
+                            <div class="control">
+                                <input required type="text" [(ngModel)]="selectedService.iconStaticURL" name="staticIcon" #staticIcon="ngModel">
+                                <media-input (onSelected)="selectedService.iconStaticURL = $event"></media-input>
+                            </div>
+                            <div class="preview" *ngIf="selectedService.iconStaticURL">
+                                <img src="{{selectedService.iconStaticURL}}" alt="">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            background color
+                        </td>
+                        <td class="color">
+                            <input required type="color" name="bgColor" [(ngModel)]="selectedService.bgColor" #bgColorF="ngModel" (change)="changeBgColor(service.id)" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            text color
+                        </td>
+                        <td class="color">
+                            <input required type="color" name="textColor" [(ngModel)]="selectedService.textColor" #textColor="ngModel" (change)="changeTextColor(service.id)" />
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+    <button (click)="saveChanges()">save</button>
+</div>

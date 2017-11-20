@@ -1,0 +1,51 @@
+<div id="contacts" class="content-member" marginBottom [includeFooter]="true">
+    <h1>contacts</h1>
+    <form id="contacts-form" (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <table>
+            <tr>
+                <td class="contacts-label">Your name:</td>
+                <td><input type="text" required [(ngModel)]="contact.name" name="name" #name="ngModel"></td>
+            </tr>
+            <tr [hidden]="name.valid || name.pristine">
+                <td class="contacts-label"></td>
+                <td>
+                    <div class="contacts-warning">You should enter your name</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="contacts-label">Your email:</td>
+                <td><input type="text" required [(ngModel)]="contact.email" name="email" email #email="ngModel"></td>
+            </tr>
+            <tr [hidden]="email.valid || email.pristine">
+                <td class="contacts-label"></td>
+                <td>
+                    <div class="contacts-warning">You should enter correct email</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="contacts-label">Subject:</td>
+                <td><input type="text" required [(ngModel)]="contact.subject" name="subject" #subject="ngModel"></td>
+            </tr>
+            <tr [hidden]="subject.valid || subject.pristine">
+                <td class="contacts-label"></td>
+                <td>
+                    <div class="contacts-warning">You should enter your desired subject</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="contacts-label">Message:</td>
+                <td><textarea name="message" required [(ngModel)]="contact.message" cols="30" rows="10" #message="ngModel"></textarea></td>
+            </tr>
+            <tr [hidden]="message.valid || message.pristine">
+                <td class="contacts-label"></td>
+                <td>
+                    <div class="contacts-warning">You should enter your message</div>
+                </td>
+            </tr>
+        </table>
+        <div class="contacts-buttons">
+            <div class="g-recaptcha" data-sitekey="6LeU6wsUAAAAAHA5Jl4oYhzZGvf7NCCL4nkNgPtL"></div>
+            <button type="submit">send</button>
+        </div>
+    </form>
+</div>

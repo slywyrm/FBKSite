@@ -1,0 +1,5 @@
+<div class="company-admin">
+    <h2>about us</h2>
+    <textarea required name="profile" [(ngModel)]="profile" rows="30" cols="30" #profileF="ngModel"></textarea>
+    <button [disabled]="profileF.errors && profileF.errors.required" (click)="save()">save</button>
+</div>

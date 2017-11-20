@@ -1,0 +1,25 @@
+<div id="portfolio" class="content-member">
+    <h1>portfolio</h1>
+    <div class="portfolio-wrapper">
+    <div class="portfolio" *ngIf="portfolio">
+        <!--<div class="portfolio-el-wrapper" *ngFor="let element of displayedPortfolio; let i = index">
+            <portfolio-el [id]="i" [element]="element"></portfolio-el>
+        </div>-->
+        <div *ngFor="let line of dividedLines; let i = index">
+            <div class="portfolio-line" id="portfolio-line{{i}}" portfolioLine *ngIf="i < displayedLines" [index]="i">
+                <div class="portfolio-el-wrapper" *ngFor="let element of lineItems(line)">
+                    <portfolio-el [element]="element"></portfolio-el>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="buttons">
+        <div id="moreButton" [hidden]="!displayMoreButton" (click)="animatePortfolio($event)" (touchstart)="animatePortfolio($event)">
+            show more
+        </div>
+        <div id="hideButton" [hidden]="!displayHideButton" (click)="animatePortfolio($event)">
+            hide
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="services-btn">
+    <div class="services-btn-img" #button>
+        <!--<div *ngIf='service.iconFa && !serviceUrl' [innerHtml]='service.iconFa'></div>-->
+        <img *ngIf='service.iconURL' [src]='imageLink' (load)="resizeButton()" #image/>
+    </div>
+    <div class="services-btn-name" #name>{{service.id}}</div>
+</div>

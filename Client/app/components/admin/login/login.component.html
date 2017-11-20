@@ -1,0 +1,38 @@
+<div id="login">
+    <form *ngIf="!adminService.user" id="login-form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+        <table>
+            <tr>
+                <td class="label">Email: </td>
+                <td><input required [(ngModel)]="email" type="text" name="email" email #emailF="ngModel"></td>
+            </tr>
+            <tr [hidden]="emailF.valid || emailF.pristine">
+                <td class="label"></td>
+                <td>
+                    <div class="forms-warning">You should enter correct email</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Password: </td>
+                <td><input required [(ngModel)]="password" type="password" name="password" #passwordF="ngModel"></td>
+            </tr>
+            <tr [hidden]="passwordF.valid || passwordF.pristine">
+                <td class="label"></td>
+                <td>
+                    <div class="forms-warning">You should enter password</div>
+                </td>
+            </tr>
+            <tr [hidden]="!errorMsg">
+                <td class="label"></td>
+                <td>
+                    <div class="forms-warning">You have entered wrong username or password</div>
+                </td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <button type="submit" [disabled]="!loginForm.form.valid">sign in</button>
+        </div>
+    </form>
+    <div *ngIf="adminService.user">
+        <h1>Hello, {{adminService.user.firstName}}</h1>
+    </div>
+</div>

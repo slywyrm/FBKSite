@@ -1,0 +1,102 @@
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), #000);
+    background: black;
+    z-index: 200;
+    -webkit-transition: filter .5s;
+    -moz-transition: filter .5s;
+    -o-transition: filter .5s;
+    -ms-transition: filter .5s;
+    transition: filter .5s;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20pt;
+}
+
+.nav * {
+    color: #bbb;
+    text-decoration: none;
+}
+
+.navleft {
+    user-select: none;
+    cursor: default;
+    display: flex;
+    align-items: center;
+}
+
+.navlogo {
+    font-family: 'Rock Salt', cursive;
+    color: white;
+    width: 145px;
+    height: 54px;
+    margin: 5px 0;
+    img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+#logged-in {
+    margin-left: 30px;
+    height: 100%;
+    display: flex;
+}
+
+.logged-in-buttons {
+    margin-left: 30px;
+    padding: 0 5px;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.navright {
+    box-sizing: border-box;
+}
+
+.navright ul {
+    display: inline-flex;
+    list-style: none;
+    -webkit-margin-after: 0;
+    -webkit-margin-before: 0;
+}
+
+.navright ul>li {
+    padding-left: 15px;
+    
+    a {
+        -webkit-transition: color .5s;
+        -moz-transition: color .5s;
+        -o-transition: color .5s;
+        -ms-transition: color .5s;
+        transition: color .5s;
+    }
+
+    .active {
+        //font-weight: bold;
+        color: white;
+    }
+}
+
+.navright ul>li:hover a {
+    color: white;
+}
+
+@media only screen and (min-device-width: 300px) and (max-device-width: 1000px) and (orientation: landscape) {
+    header {
+        padding: -10% 0;
+    }
+
+    #offcanvas-toggle {
+        padding: 1.5% !important;
+    }
+}

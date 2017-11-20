@@ -1,0 +1,11 @@
+<div id="site-loading" *ngIf='siteLoading'>
+    <img [src]="siteLoadingSrc" alt="Please wait, site is loading">
+</div>
+<fbknav></fbknav>
+<div id="main">
+    <router-outlet></router-outlet>
+    <footer>
+        <div>© 2016 Frame Bakery. All Right Reserved</div>
+    </footer>
+</div>
+<overlay></overlay>

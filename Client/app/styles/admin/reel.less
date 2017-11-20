@@ -1,0 +1,66 @@
+@import '../include.less';
+
+.reel-admin {
+    //margin-top: @header-height;
+
+    .media-list {
+        list-style: none;
+        width: 100%;
+        padding: 0;
+
+        li {
+            display: flex;
+            border-bottom: 1px;
+            padding: 5px 0;
+
+            .file {
+                flex: 2;
+            }
+
+            .uploaded {
+                flex: 1;
+            }
+
+            .reel-mng {
+                flex: 1;
+                display: flex;
+                justify-content: center;
+
+                div {
+                    display: flex;
+                    justify-content: center;
+                    
+                    .reel-mng-buttons {
+                        //box-sizing: content-box;
+                        height: 95%;
+                        border: solid 1px;
+                        padding: 0 5%;
+                        margin-left: 5%;
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            &:hover {
+                background: lightblue;
+            }
+        }
+
+        .last {
+            border-bottom: 0 !important;
+        }
+
+        .active {
+            background-color: gray !important;
+        }
+    }
+    
+    form {
+        button {
+            border-radius: 0px;
+        }
+        input {
+            border-radius: 0px;
+        }
+    }
+}

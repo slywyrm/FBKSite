@@ -1,0 +1,21 @@
+<div id="reel" class="reel-admin" *ngIf="mediaList">
+    <h1>reel</h1>
+    <ul class="media-list">
+        <li *ngFor="let file of mediaList.files" [class.active]="file.name === mediaList.selected" (click)="clickedItem = file.name" [ngClass]="{ last: last }">
+            <div class="file">{{file.name}}</div>
+            <div class="uploaded">{{file.uploaded}}</div>
+            <div class="reel-mng">
+                <div *ngIf="file.name === mediaList.selected">Selected file</div>
+                <div *ngIf="file.name != mediaList.selected && file.name === clickedItem">
+                    <div class="reel-mng-buttons" (click)="selectFile(file.name)">Select</div>
+                    <div class="reel-mng-buttons" (click)="removeFile(file.name)">Remove</div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <form #uploadForm="ngForm" (ngSubmit)="onSubmit()">
+        <label>upload new file: </label>
+        <input required type="file" name="file" accept=".mp4" #mediaFile/>
+        <button type="submit">upload</button>
+    </form>
+</div>

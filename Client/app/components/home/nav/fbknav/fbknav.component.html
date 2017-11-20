@@ -1,0 +1,49 @@
+<header>
+    <nav class="nav">
+        <div class="navleft">
+            <div class="navlogo"><img src="{{logoLink}}" alt=""></div>
+            <div id="logged-in" *ngIf="adminService.user">
+                <div *ngIf="routeActive" [ngSwitch]="this.component">
+                    <a *ngSwitchCase="'HomeComponent'" routerLink="admin">
+                        <div class="logged-in-buttons">admin</div>
+                    </a>
+                    <a *ngSwitchCase="'AdminComponent'" routerLink="home">
+                        <div class="logged-in-buttons">site</div>
+                    </a>
+                </div>
+                <div class="logged-in-buttons" (click)="adminService.signOut()">sign out</div>
+            </div>
+        </div>
+        <div class="navright" *ngIf="routeActive" [ngSwitch]="this.component" #navList>
+            <ul *ngSwitchCase="'HomeComponent'" class="navbar-sscroll">
+                <li><a routerLink="home/reel" routerLinkActive="active">reel</a></li>
+                <li><a routerLink="home/portfolio" routerLinkActive="active">portfolio</a></li>
+                <li><a routerLink="home/about" routerLinkActive="active">about us</a></li>
+                <li><a routerLink="home/services" routerLinkActive="active">services</a></li>
+                <li><a routerLink="home/contacts" routerLinkActive="active">contacts</a></li>
+            </ul>
+            <ul class="navright" *ngSwitchCase="'AdminComponent'">
+                <li><a routerLink="admin/reel" routerLinkActive="active">reel</a></li>
+                <li><a routerLink="admin/portfolio" routerLinkActive="active">portfolio</a></li>
+                <li><a routerLink="admin/company" routerLinkActive="active">about us</a></li>
+                <li><a routerLink="admin/services" routerLinkActive="active">services</a></li>
+                <li><a routerLink="admin/contacts" routerLinkActive="active">contacts</a></li>
+            </ul>
+        </div>
+        <div id="offcanvas-toggle" (click)="offcanvasToggled($event)">
+            <i class="fa fa-bars"></i>
+        </div>
+    </nav>
+</header>
+<div id="offcanvas-nav" *ngIf="!offcanvasTranslateX" #offcanvasEl>
+    <div class="close" (click)="offcanvasToggled($event)">
+        <i class="fa fa-times"></i>
+    </div>
+    <ul class="navbar-sscroll">
+        <li><a routerLink="home/reel" routerLinkActive="active">reel</a></li>
+        <li><a routerLink="home/portfolio" routerLinkActive="active">portfolio</a></li>
+        <li><a routerLink="home/about" routerLinkActive="active">about us</a></li>
+        <li><a routerLink="home/services" routerLinkActive="active">services</a></li>
+        <li><a routerLink="home/contacts" routerLinkActive="active">contacts</a></li>
+    </ul>
+</div>

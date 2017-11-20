@@ -1,0 +1,59 @@
+@import './../include.less';
+
+.services-admin {
+    .service {
+        width: 100%;
+
+        .service-label {
+            display: flex;
+
+            .service-title {
+                flex: 4;
+                cursor: pointer;
+            }
+
+            .service-label-buttons {
+                flex: 1;
+
+                button {
+                    //width: 100px;
+                    height: 70%;
+                    font-size: 1.2vw;
+                    margin: 5px;
+
+                    &:hover {
+                        cursor: pointer;
+                        background: lightblue;
+                        border: inherit;
+                    }
+                }
+            }
+        }
+
+        .service-admin {
+            padding: 0 10%;
+            border: 1px solid #ccc;
+
+            .service-form {
+                #forms(20%, left);
+
+                .color {
+                    width: 20%;
+                    height: 50px;
+                }
+            }
+        }
+    }
+}
+
+.first {
+    .up {
+        display: none !important;
+    }
+}
+
+.last {
+    .down {
+        display: none !important;
+    }
+}

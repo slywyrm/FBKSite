@@ -1,0 +1,7 @@
+<div *ngIf='services != null' id="services" class="content-member">
+    <h1>services</h1>
+    <div class="services-nav">
+        <service *ngFor="let service of orderedServices" [service]="service" (clicked)="selectService($event)" [class.service-active]="service === selectedService"></service>
+    </div>
+    <div #content *ngIf="selectedService != null" class="services-content" [innerHtml]="selectedService.description"></div>
+</div>

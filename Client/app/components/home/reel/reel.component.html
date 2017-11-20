@@ -1,0 +1,9 @@
+<div id="reel" class="reel content-member" >
+    <div class="reel-wrapper" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" (click)="onClick()">
+        <video *ngIf="reelUrl" #video id="reel-video" poster="{{logoUrl}}" src="{{reelUrl}}" loop muted>
+            <source src="{{reelUrl}}" type="video/mp4">
+            <source src="{{webmUrl}}" type="video/webm">
+        </video>
+        <div class="reel-reminder">hover to play, click to enter fullscreen</div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+@header-height: 86px;
+
+.content {
+    background: black;
+    margin: 10px 20%;
+    font-size: 0.8vw;
+}
+
+#forms(@label-width: 15%, @label-align: right) {
+    table {
+        width: 100%;
+    }
+    td {
+        box-sizing: content-box;
+        padding: 0;
+        padding-bottom: 5px;
+    }
+    td.label {
+        width: @label-width;
+        text-align: @label-align;
+        padding-right: 10px;
+    }
+    td:not(.label) {
+        width: 100% - @label-width;
+    }
+    td:not(.label)>* {
+        height: 100%;
+        width: 100%;
+        border: 1px solid #ddd;
+        font-size: 15pt;
+        padding: 1px;
+        resize: none;
+    }
+    .buttons {
+        margin-left: @label-width;
+        * {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        button {
+            width: 100px;
+            height: 30px;
+            font-size: 15pt;
+        }
+    }
+}
+
+.forms-warning {
+    border: 1px solid rgb(235,204,204);
+    background-color: #f2dede;
+    color: #a94442;
+}

@@ -1,0 +1,11 @@
+<div *ngIf="componentData != null" id="overlay">
+    <div id="overlay-wrapper">
+        <div id="overlay-cancel">
+            <!--<img src="{{cancelPath}}" alt="">-->
+            <i class="fa fa-times" aria-hidden="true"></i>
+        </div>
+        <div id="overlay-content">
+            <dynamic-component [componentData]="componentData"></dynamic-component>
+        </div>
+    </div>
+</div>

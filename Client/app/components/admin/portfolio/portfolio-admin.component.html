@@ -1,0 +1,23 @@
+<div id="portfolio" class="portfolio-admin">
+    <h1>portfolio</h1>
+    <div class="filter">
+        Filter: <input type="text" #filter (keyup)="onFilterKey(filter.value)">
+        <button (click)="addElement()">add element</button>
+        <button (click)="saveChanges()">save changes</button>
+    </div>
+    <div class="portfolio-list">
+        <div class="portfolio-item" *ngFor="let element of orderedPortfolio; let first = first; let last = last" [ngClass]="{ first: first, last: last }">
+            <div class="description">
+                <div class="title">{{element.name}} / {{element.year}}</div>
+                <div class="production">{{element.production}}</div>
+                <div class="director">{{element.director}}</div>
+            </div>
+            <div class="buttons-admin">
+                <button (click)="onSelect(element.id)">edit</button>
+                <button (click)="removeElement(element.id)">remove</button>
+                <button (click)="changeOrder(element.id, 1)" class="up"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                <button (click)="changeOrder(element.id, -1)" class="down"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

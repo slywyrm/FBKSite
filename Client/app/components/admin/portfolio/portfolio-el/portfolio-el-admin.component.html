@@ -1,0 +1,124 @@
+<div class="portfolio-el-admin" *ngIf="element">
+    <h1>{{element.name}} / {{element.year}}</h1>
+    <form id="portfolio-el-form" (ngSubmit)="save()" #elementForm="ngForm">
+        <table>
+            <tr>
+                <td class="label">Name</td>
+                <td><input required type="text" [(ngModel)]="element.name" name="name" #name="ngModel"></td>
+            </tr>
+            <tr *ngIf="name.errors && name.errors.required">
+                <td class="label"></td>
+                <td>
+                    <div class="forms-warning">Name is required</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Year</td>
+                <td><input required type="number" [(ngModel)]="element.year" name="year" #year="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Production</td>
+                <td><input required type="text" [(ngModel)]="element.production" name="production" #production="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Director</td>
+                <td><input required type="text" [(ngModel)]="element.director" name="director" #director="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Operator</td>
+                <td><input required type="text" [(ngModel)]="element.operator" name="operator" #operator="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Description</td>
+                <td><textarea required name="description" [(ngModel)]="element.description" cols="30" rows="10" #description="ngModel"></textarea></td>
+            </tr>
+            <tr>
+                <td class="label">Production start</td>
+                <td><input required type="month" [(ngModel)]="start" name="productionStart" #productionStart="ngModel" (change)="startChanged()"></td>
+            </tr>
+            <tr>
+                <td class="label">Production end</td>
+                <td><input required type="month" [(ngModel)]="end" name="productionEnd" #productionEnd="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Shots number</td>
+                <td><input required type="number" [(ngModel)]="element.shotsNumber" name="shotsNumber" #shotsNumber="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">IMDB link</td>
+                <td><input type="text" [(ngModel)]="element.imdb" name="imdb" #imdb="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Rotten Tomatoes link</td>
+                <td><input type="text" [(ngModel)]="element.rottenTomatoes" name="rottenTomatoes" #rottenTomatoes="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">KinoPoisk link</td>
+                <td><input type="text" [(ngModel)]="element.kinopoisk" name="kinopoisk" #kinopoisk="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Facebook link</td>
+                <td><input type="text" [(ngModel)]="element.facebook" name="facebook" #facebook="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">Twitter link</td>
+                <td><input type="text" [(ngModel)]="element.twitter" name="twitter" #twitter="ngModel"></td>
+            </tr>
+            <tr>
+                <td class="label">VK link</td>
+                <td><input type="text" [(ngModel)]="element.vkontakte" name="vkontakte" #vkontakte="ngModel"></td>
+            </tr>
+            <tr class="banner">
+                <td class="label">Banner URL</td>
+                <td class="file-control">
+                    <div class="control">
+                        <input required type="text" [(ngModel)]="element.banner" name="banner" #banner="ngModel">
+                        <media-input (onSelected)="bannerSelect($event)"></media-input>
+                    </div>
+                    <div class="preview" *ngIf="element.banner">
+                        <img src="{{element.banner}}" alt="">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Stills aspect ratio</td>
+                <td><input required type="text" [value]="stillAR" (change)="changeAspectRatio($event.target.value)" name="stillar"></td>
+            </tr>
+            <tr *ngIf="stillARError">
+                <td class="label"></td>
+                <td>
+                    <div class="forms-warning">There was error in your statement</div>
+                </td>
+            </tr>
+            <tr class="still" *ngFor="let still of stills; let i = index; let first = first; let last = last" [ngClass]="{ first: first, last: last }">
+                <td class="label">Still #{{i}}</td>
+                <td class="file-control">
+                    <div class="control" *ngIf="still">
+                        <input required type="text" [value]="still.image" (change)="changeStill(still.id, $event.target.value)">
+                        <media-input (onSelected)="changeStill(still.id, $event)"></media-input>
+                        <div class="still-buttons">
+                            <button type="button" (click)="changeStillOrder(still.id, -1)" class="up"><i class="fa fa-arrow-up" aria-hidden="true"></i></button>
+                            <button type="button" (click)="changeStillOrder(still.id, 1)" class="down"><i class="fa fa-arrow-down" aria-hidden="true"></i></button>
+                            <button type="button" (click)="removeStill(still.id)">remove</button>
+                        </div>
+                    </div>
+                    <div class="preview">
+                        <img *ngIf="still.image" src="{{still.image}}" alt="">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Add new still</td>
+                <td class="buttons">
+                    <button type="button" (click)="addStill()">add still</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="label">Save portfolio element</td>
+                <td class="buttons">
+                    <button type="submit" [disabled]="!elementForm.form.valid">save</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
